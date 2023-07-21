@@ -73,7 +73,8 @@ class ControllerLoanBook {
 
             const loanBookUpdated = await BookLoan.update(
                 {
-                    status: "RETURN"
+                    status: "RETURN",
+                    return_date: Date.now()
                 },
                 {
                     where: { id: id },
