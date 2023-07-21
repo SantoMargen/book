@@ -14,7 +14,7 @@ class ControllerLoanBook {
                 user_id
             }
 
-            const findLoan = BookLoan.findOne({
+            const findLoan = await BookLoan.findOne({
                 where: {
                     [Op.and]: [
                         { user_id: user_id },
@@ -34,7 +34,7 @@ class ControllerLoanBook {
 
     static async findLoanBookById(req, res, next) {
         try {
-            const { loanBook: id } = req.params
+            const { idLoanBook: id } = req.params
             if (!Number(id)) throw { name: "NOTFOUND" }
 
             const findLoanBook = await BookLoan.findByPk(id)
@@ -68,7 +68,7 @@ class ControllerLoanBook {
 
     static async updateStatus(req, res, next) {
         try {
-            const { loanBook: id } = req.params
+            const { idLoanBook: id } = req.params
             if (!Number(id)) throw { name: "NOTFOUND" }
 
             const loanBookUpdated = await BookLoan.update(
